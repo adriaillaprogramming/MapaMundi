@@ -23,7 +23,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/PlayerNameInput1"
-        android:text="Nom" />
+        android:hint="Nom" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Nom"
+        android:hint="Nom"
         android:ems="10"
         android:id="@+id/PlayerNameInput2" />
 
@@ -53,7 +53,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/PlayerNameInput3"
-        android:text="Nom" />
+        android:hint="Nom" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/PlayerNameInput4"
-        android:text="Nom" />
+        android:hint="Nom" />
 
     <Button
         android:layout_width="wrap_content"
