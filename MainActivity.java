@@ -1,3 +1,126 @@
+package com.example.android.mapamundi;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    int pp1 = 0;
+    int pp2 = 0;
+    int pp3 = 0;
+    int pp4 = 0;
+
+
+    public static TextView playerName1;
+    public static TextView playerName2;
+    public static TextView playerName3;
+    public static TextView playerName4;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        //Cast continents' buttons
+
+
+        Button americaButton = (Button) findViewById(R.id.america_boto);
+        Button asiaButton = (Button) findViewById(R.id.asia_boto);
+        Button oceaniaButton = (Button) findViewById(R.id.oceania_boto);
+        Button africaButton = (Button) findViewById(R.id.africa_boto);
+        Button europaButton = (Button) findViewById(R.id.europa_boto);
+
+        //Set onClickListener
+
+        americaButton.setOnClickListener(this);
+        asiaButton.setOnClickListener(this);
+        oceaniaButton.setOnClickListener(this);
+        africaButton.setOnClickListener(this);
+        europaButton.setOnClickListener(this);
+
+
+        //Cast players' Buttons
+
+
+        Button addPoints1 = (Button) findViewById(R.id.addPoints1);
+        Button addPoints2 = (Button) findViewById(R.id.addPoints2);
+        Button addPoints3 = (Button) findViewById(R.id.addPoints3);
+        Button addPoints4 = (Button) findViewById(R.id.addPoints4);
+
+        //Set buttons' onClickListeners
+
+
+        addPoints1.setOnClickListener(this);
+        addPoints2.setOnClickListener(this);
+        addPoints3.setOnClickListener(this);
+        addPoints4.setOnClickListener(this);
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+
+
+        //CHANGING NAMES
+
+        playerName1 = (TextView) findViewById(R.id.PlayerName1);
+        playerName2 = (TextView) findViewById(R.id.PlayerName2);
+        playerName3 = (TextView) findViewById(R.id.PlayerName3);
+        playerName4 = (TextView) findViewById(R.id.PlayerName4);
+
+
+        Intent intent2 = getIntent();
+        Bundle extras1 = intent2.getExtras();
+
+        if (extras1 != null) {
+
+            String jugador1 = extras1.getString("JUGADOR1");
+            String jugador2 = extras1.getString("JUGADOR2");
+            String jugador3 = extras1.getString("JUGADOR3");
+            String jugador4 = extras1.getString("JUGADOR4");
+
+            playerName1.setText(jugador1);
+            playerName2.setText(jugador2);
+            playerName3.setText(jugador3);
+            playerName4.setText(jugador4);
+
+        } else {
+            Toast.makeText(getApplicationContext(), "No s'han trobat els noms", Toast.LENGTH_LONG).show();
+        }
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -90,39 +213,40 @@
         //Cast players' TextViews
 
 
-        final TextView playerPoints1 = (TextView) findViewById(R.id.PlayerPoints1);
+        TextView playerPoints1 = (TextView) findViewById(R.id.PlayerPoints1);
         TextView playerPoints2 = (TextView) findViewById(R.id.PlayerPoints2);
         TextView playerPoints3 = (TextView) findViewById(R.id.PlayerPoints3);
         TextView playerPoints4 = (TextView) findViewById(R.id.PlayerPoints4);
 
-        //Players' points ints
 
-        //Punts
-        int pp1 = 0;
-        int pp2 = 0;
-        int pp3 = 0;
-        int pp4 = 0;
+
+
+
+
 
         switch (view.getId()) {
             case (R.id.addPoints1):
-                
+
                 pp1 = pp1 + 1;
                 playerPoints1.setText(Integer.toString(pp1));
 
                 break;
 
             case (R.id.addPoints2):
+
                 pp2 = pp2 + 1;
                 playerPoints2.setText(Integer.toString(pp2));
                 break;
 
             case (R.id.addPoints3):
+
                 pp3 = pp3 + 1;
                 playerPoints3.setText(Integer.toString(pp3));
                 break;
 
             case (R.id.addPoints4):
-                pp4++;
+
+                pp4 = pp4 + 1;
                 playerPoints4.setText(Integer.toString(pp4));
                 break;
         }
